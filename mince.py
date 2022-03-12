@@ -5,6 +5,9 @@
 import sys, io
 import pystray                                   # system tray ikona - pip install pystray
 from forex_python.converter import CurrencyRates # aktualni kurzy men - pip install forex_python
-import pandas as pds                             # prace s dataframy a tabulkami jako podklad pro grafy - pip install pandas
-from matplotlib import pyplot as plt             # grafy - pip install matplotlib
+import pandas as Pds                             # prace s dataframy a tabulkami jako podklad pro grafy - pip install pandas
+from matplotlib import pyplot as Plt             # grafy - pip install matplotlib
+
+# nacteni vlastni knihovny men
+import fiat # promenne: eur, usd, czk, gbp, chf, pln, rub
 

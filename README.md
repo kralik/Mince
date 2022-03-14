@@ -2,7 +2,7 @@
 
 Aktuální kurzy měn
 
-Student: Martin Vodráška, AIK2, vosplzen.cz
+Student: Martin Vodráška, AIK2, (https://vosplzen.cz)
 License: GPL (https://www.gnu.org/licenses/gpl-3.0.html)
 
 ## Program Mince

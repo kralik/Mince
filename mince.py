@@ -7,6 +7,7 @@ import pystray                                   # system tray ikona - pip insta
 from forex_python.converter import CurrencyRates # aktualni kurzy men - pip install forex_python
 import pandas as Pds                             # prace s dataframy a tabulkami jako podklad pro grafy - pip install pandas
 from matplotlib import pyplot as Plt             # grafy - pip install matplotlib
+from datetime import datetime as Dt              # datum a cas - pip install datetime
 
 # nacteni vlastni knihovny men
 import fiat # promenne: eur, usd, czk, gbp, chf, pln, rub
@@ -38,6 +39,7 @@ class MenovyPar(object):
     def __bool__(self):
         global current_rate
         try:
+            # pouziti knihovny forex_python
             c = CurrencyRates()
             current_rate = c.get_rate(self.f1, self.f2)
             return True
@@ -55,6 +57,9 @@ if __name__ == "__main__":
     euro = Mena(fiat.eur)
     koruna = Mena(fiat.czk)
     eurczk = MenovyPar(euro.abbr, koruna.abbr)
+
+    now = Dt.now()
+    print(now.strftime('%Y-%m-%d %H:%M:%S'));
 
     if (eurczk and euro and koruna):
         # 1 € = 25.213 Kč

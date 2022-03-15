@@ -56,11 +56,22 @@ if __name__ == "__main__":
 
     euro = Mena(fiat.eur)
     koruna = Mena(fiat.czk)
-    eurczk = MenovyPar(euro.abbr, koruna.abbr)
+    #eurczk = MenovyPar(euro.abbr, koruna.abbr)
 
     now = Dt.now()
-    print(now.strftime('%Y-%m-%d %H:%M:%S'));
+    #print(now.strftime('%Y-%m-%d %H:%M:%S'));
 
-    if (eurczk and euro and koruna):
-        # 1 € = 25.213 Kč
-        print(euro.currencyListing(1) + ' = ' + koruna.currencyListing(eurczk.currentRate()))
+    #if (eurczk and euro and koruna):
+        # 1 € = 24.867 Kč
+        #print(euro.currencyListing(1) + ' = ' + koruna.currencyListing(eurczk.currentRate()))
+    
+    # nacteni datasetu dennich kurzu
+    c = CurrencyRates()
+    print(c.get_rates('EUR'))
+    print(c.get_rates('USD'))
+    print(c.get_rates('CZK'))
+    print(c.get_rates('GBP'))
+    print(c.get_rates('CHF'))
+    print(c.get_rates('PLN'))
+    print(c.get_rates('RUB'))
+

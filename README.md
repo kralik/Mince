@@ -39,13 +39,13 @@ Pro jednotlivé časy aktualizací program bude stahovat data sety pro všechny 
 
 ### Určené fiat měny:
 
-Euro *EUR*
-Americký dolar *USD*
-Česká koruna *CZK*
-Libra šterlinků *GBP*
-Švýcarský frank *CHF*
-Polský zlotý *PLN*
-Ruský rubl *RUB*
+- Euro *EUR*
+- Americký dolar *USD*
+- Česká koruna *CZK*
+- Libra šterlinků *GBP*
+- Švýcarský frank *CHF*
+- Polský zlotý *PLN*
+- Ruský rubl *RUB*
 
 ### Knihovna forex_python
 
@@ -53,3 +53,8 @@ Tato knihovna bere denni kurzy z (https://theforexapi.com/). Toto API je cituji 
 > Forex API je bezplatná služba pro aktuální a historické kurzy cizích měn vytvořená na základě dat zveřejňovaných Evropskou centrální bankou.
 
 Zdá se, že tato služba je bez omezení. Historická data jsou od nyní až do 4.1. 1999
+
+### Stažení datasetů deních kurzů
+
+Program by měl být koncipován, tak aby stáhnul celý dataset s denními kurzy jen jednou denně. Není nutné stahovat zvlášť data k jednomu měnovému páru. Stejně tak není nutné stahovat měnový obrácený pár, ten si můžeme jednoduše dopočítat.
+

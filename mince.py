@@ -53,6 +53,35 @@ class MenovyPar(object):
         global current_rate
         return current_rate
 
+class DataSet(object):
+
+    data_path = 'datasets/'
+    files_suffix = '.py';
+
+    def __init__(self, date):
+        
+        self.date = Dt.fromisoformat(str(date))
+        self.dataset = self.data_path + str(self.date.today()) + self.files_suffix
+        
+        if (os.path.exists(self.dataset)):
+            print('soubor datasetu existuje, tak z neho cti')
+        else:
+            print('stahni dataset dle date a pak z neho cti')
+            self.createDataSet(self.dataset)
+
+    def createDataSet(self, pathfile):
+        self.pathfile = pathfile
+        #c = CurrencyRates()
+        with open(pathfile, 'w') as f:
+            #f.write('EUR = {}'.format(c.get_rates('EUR')))
+            #f.write('USD = {}'.format(c.get_rates('USD')))
+            #f.write('CZK = {}'.format(c.get_rates('CZK')))
+            #f.write('GBP = {}'.format(c.get_rates('GBP')))
+            #f.write('CHF = {}'.format(c.get_rates('CHF')))
+            #f.write('PLN = {}'.format(c.get_rates('PLN')))
+            #f.write('RUB = {}'.format(c.get_rates('RUB')))
+            f.write(' ')
+
 # Main
 if __name__ == "__main__":
 
@@ -76,26 +105,19 @@ if __name__ == "__main__":
     #print(c.get_rates('PLN'))
     #print(c.get_rates('RUB'))
 
-    # --- pri otevreni programu kontroluji, zda je pred 16:30 nebo po ---
+    # pri otevreni programu kontroluji, zda je pred 16:30 nebo po
 
-    now = Dt.now() #print(now.strftime('%Y-%m-%d %H:%M:%S'))
+    now = Dt.now()
     today = Dt.today()
     td = timedelta(1)
+    minutes_from_midnight = (now.hour * 60) + now.minute
 
-    if (((now.hour * 60) + now.minute) > ecb_update_time):
+    if (minutes_from_midnight > ecb_update_time):
         # je po 16:30
         print('je po 16:30')
-        
-        if (os.path.exists('datasets/' + str(today) + '.py')):
-            print('soubor datasetu existuje a budu nacitat kurzy z nej')
-        else:
-            print('stahni aktualni dataset')
+        current_daily_rate = DataSet(today)
     
-    if (((now.hour * 60) + now.minute) <= ecb_update_time):
+    if (minutes_from_midnight <= ecb_update_time):
         # je pred nebo rovno 16:30
         print('je pred nebo rovno 16:30')
-
-        if (os.path.exists('datasets/' + str(today - td) + '.py')):
-            print('soubor datasetu existuje a budu nacitat kurzy z nej')
-        else:
-            print('stahni dataset predchoziho dne')
+        yesterdays_daily_rate = DataSet(today - td)
